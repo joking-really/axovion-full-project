@@ -1,0 +1,416 @@
+{
+  "name": "Axovion LinkedIn Automation - Fixed",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 21
+            }
+          ]
+        }
+      },
+      "name": "Schedule Trigger - US Morning",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        0
+      ],
+      "notes": "9 PM Pakistan = 11 AM EST / 8 AM PST. Optimal for US business hours."
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "name": "linkedInPersonUrn",
+              "value": "urn:li:person:Xxv6sOly_U",
+              "type": "string"
+            },
+            {
+              "name": "linkedInCompanyUrn",
+              "value": "urn:li:company:YOUR_COMPANY_ID",
+              "type": "string"
+            },
+            {
+              "name": "cfAccountId",
+              "value": "2cbbbd8d3ea4d517fade25f8d2bd8217",
+              "type": "string"
+            },
+            {
+              "name": "imageWidth",
+              "value": 1024,
+              "type": "number"
+            },
+            {
+              "name": "imageHeight",
+              "value": 1024,
+              "type": "number"
+            },
+            {
+              "name": "seoKeywordA",
+              "value": "AI Automation Agency",
+              "type": "string"
+            },
+            {
+              "name": "seoKeywordB",
+              "value": "Ecommerce Automation",
+              "type": "string"
+            },
+            {
+              "name": "seoKeywordC",
+              "value": "SaaS Growth",
+              "type": "string"
+            },
+            {
+              "name": "founderName",
+              "value": "Muneeb ur Rehman",
+              "type": "string"
+            },
+            {
+              "name": "agencyName",
+              "value": "Axovion.io",
+              "type": "string"
+            },
+            {
+              "name": "targetClient",
+              "value": "ecommerce brands and SaaS startups looking to automate operations",
+              "type": "string"
+            },
+            {
+              "name": "notificationEmail",
+              "value": "ziakhank395@gmail.com",
+              "type": "string"
+            },
+            {
+              "name": "primaryNiche",
+              "value": "ecommerce",
+              "type": "string"
+            },
+            {
+              "name": "secondaryNiche",
+              "value": "saas",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "name": "Workflow Configuration",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        200,
+        0
+      ],
+      "notes": "Updated config: focused on ecommerce + SaaS, US timezone posting"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "value": "14ZhLzUXrF7NU5OoG4iy0igNnDw2XU4VnSc1IDUk8OWs",
+          "mode": "list"
+        },
+        "sheetName": {
+          "value": "gid=0",
+          "mode": "list"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "status",
+              "lookupValue": "pending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Read From Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        400,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const rows = $input.all();\nconst pending = rows.filter(r => r.json.status === 'pending');\n\nif (!pending || pending.length === 0) {\n  throw new Error('No pending topics. Add more rows or reset status.');\n}\n\n// Filter by primary niche (ecommerce or saas)\nconst nicheFiltered = pending.filter(r => \n  r.json.industry?.toLowerCase().includes('ecommerce') ||\n  r.json.industry?.toLowerCase().includes('saas') ||\n  r.json.industry?.toLowerCase().includes('medical') ||\n  r.json.industry?.toLowerCase().includes('sales') ||\n  r.json.industry?.toLowerCase().includes('real estate')\n);\n\nconst pool = nicheFiltered.length > 0 ? nicheFiltered : pending;\nconst pick = pool[Math.floor(Math.random() * Math.min(pool.length, 5))];\n\nreturn [{\n  json: {\n    workflow_name: pick.json.workflow_name,\n    what_it_does: pick.json.what_it_does,\n    industry: pick.json.industry,\n    tools_used: pick.json.tools_used,\n    result_or_stat: pick.json.result_or_stat,\n    hook_angle: pick.json.hook_angle\n  }\n}];"
+      },
+      "name": "Pick Todays Topic - Niche Filtered",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        600,
+        0
+      ],
+      "notes": "Filters for ecommerce/SaaS primary, others secondary. Random from top 5."
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are writing LinkedIn content for {{ $('Workflow Configuration').first().json.founderName }}, founder of {{ $('Workflow Configuration').first().json.agencyName }}, an AI automation agency specializing in {{ $('Workflow Configuration').first().json.primaryNiche }} and {{ $('Workflow Configuration').first().json.secondaryNiche }}.\n\nPERSONA RULES:\n- First person, direct, confident, zero fluff\n- You BUILT this for real clients\n- Never use: game-changer, revolutionary, exciting, leverage, synergy\n- Short sentences. Max 2-3 lines per paragraph.\n- Numbers beat adjectives\n\nWORKFLOW:\nName: {{ $json.workflow_name }}\nWhat: {{ $json.what_it_does }}\nIndustry: {{ $json.industry }}\nTools: {{ $json.tools_used }}\nResult: {{ $json.result_or_stat }}\nHook: {{ $json.hook_angle }}\n\nPOST STRUCTURE:\nLine 1-2: Hook (result/problem/myth/process based on hook_angle)\n[blank]\nLines 3-6: Core value - what it does, why it matters\n[blank]\nLines 7-9: One deeper layer - specific detail or insight\n[blank]\nLine 10: Closing question SPECIFIC to industry\n\nIMAGE PROMPT RULES:\nYou are a Prompt Generation Agent. Transform workflow details into Z-Image Turbo optimized prompts.\n\nRULES:\n1. NO negative prompts - Z-Image ignores them\n2. Structure: [Shot] + [Subject] + [Environment] + [Lighting] + [Mood] + [Style] + [Constraints]\n3. Include camera vocabulary: shot on Canon R5, 85mm f/1.4, Kodak Portra 400\n4. Explicit: adult subjects, fully clothed, modest professional\n5. End with: no text, no watermark, no logos, safe for work\n6. 80-250 words, narrative style not tag soup\n7. Hook angle logic: result=show outcome, process=show workflow\n\nOUTPUT FORMAT:\nReturn ONLY valid JSON:\n{\"image_prompt\": \"...\", \"caption_draft\": \"...\"}"
+      },
+      "name": "Generate Content",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        800,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+        "options": {
+          "temperature": 0.7
+        }
+      },
+      "name": "Groq Model - Content",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        800,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = $input.first().json.output;\nlet clean = raw.replace(/```json|```/g, '').trim();\nclean = clean.replace(/[\\u0000-\\u001F\\u007F-\\u009F]/g, ' ');\n\nlet parsed;\ntry {\n  parsed = JSON.parse(clean);\n} catch (e) {\n  const promptMatch = clean.match(/\"image_prompt\":\\s*\"(.*?)\"/s);\n  const captionMatch = clean.match(/\"caption_draft\":\\s*\"(.*?)\"/s);\n  if (promptMatch && captionMatch) {\n    parsed = { image_prompt: promptMatch[1], caption_draft: captionMatch[1] };\n  } else {\n    throw new Error('Parse failed: ' + clean.substring(0, 300));\n  }\n}\n\nif (!parsed.image_prompt || !parsed.caption_draft) {\n  throw new Error('Incomplete JSON');\n}\n\nreturn [{ json: { image_prompt: parsed.image_prompt, caption_draft: parsed.caption_draft } }];"
+      },
+      "name": "Parse Content JSON",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1000,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are a LinkedIn SEO editor. Refine this post without destroying voice or structure.\n\nRULES:\n1. Weave in keywords naturally: {{ $('Workflow Configuration').first().json.seoKeywordA }}, {{ $('Workflow Configuration').first().json.seoKeywordB }}, {{ $('Workflow Configuration').first().json.seoKeywordC }}. Skip if forced.\n2. Tighten long/vague sentences\n3. Add EXACTLY 5 hashtags: 1 broad, 2 mid-tier, 2 niche\n4. Stay under 280 words\n5. Do NOT change hook or closing question\n6. No preamble, explanations, bold markers\n7. No buzzwords or corporate language\n\nCaption Draft:\n{{ $json.caption_draft }}\n\nReturn ONLY final post as plain text."
+      },
+      "name": "SEO Enrichment",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        1000,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+        "options": {
+          "temperature": 0.3
+        }
+      },
+      "name": "Groq Model - SEO",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "name": "prompt",
+              "value": "={{ $json.image_prompt }}",
+              "type": "string"
+            },
+            {
+              "name": "width",
+              "value": 1024,
+              "type": "number"
+            },
+            {
+              "name": "height",
+              "value": 1024,
+              "type": "number"
+            },
+            {
+              "name": "steps",
+              "value": 8,
+              "type": "number"
+            }
+          ]
+        }
+      },
+      "name": "Image Parameters",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1200,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://image.pollinations.ai/prompt/{{ encodeURIComponent($json.prompt) }}?width={{ $json.width }}&height={{ $json.height }}&seed=42&nologo=true&enhance=true",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "name": "Generate Image - Pollinations",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        1400,
+        0
+      ],
+      "notes": "Pollinations.ai - free, no API key needed. Fallback from Modal."
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition"
+      },
+      "name": "Merge Caption + Image",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1600,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.linkedin.com/v2/assets?action=registerUpload",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "linkedInOAuth2Api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"registerUploadRequest\": {\n    \"recipes\": [\"urn:li:digitalmediaRecipe:feedshare-image\"],\n    \"owner\": \"{{ $('Workflow Configuration').first().json.linkedInPersonUrn }}\",\n    \"serviceRelationships\": [{\n      \"relationshipType\": \"OWNER\",\n      \"identifier\": \"urn:li:userGeneratedContent\"\n    }]\n  }\n}"
+      },
+      "name": "LinkedIn: Register Upload",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1800,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const resp = $input.first().json;\nconst uploadUrl = resp?.value?.uploadMechanism?.['com.linkedin.digitalmedia.uploading.MediaUploadHttpRequest']?.uploadUrl;\nconst assetUrn = resp?.value?.asset;\n\nif (!uploadUrl) throw new Error('No uploadUrl. Check OAuth scopes.');\nif (!assetUrn) throw new Error('No asset URN.');\n\nreturn [{ json: { uploadUrl, assetUrn } }];"
+      },
+      "name": "Extract Upload URL",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2000,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "={{ $json.uploadUrl }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "linkedInOAuth2Api",
+        "sendBody": true,
+        "contentType": "binaryData",
+        "inputDataFieldName": "data",
+        "options": {}
+      },
+      "name": "LinkedIn: Upload Image",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2200,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const caption = $('SEO Enrichment').first().json.output;\nconst assetUrn = $('Extract Upload URL').first().json.assetUrn;\nconst authorUrn = $('Workflow Configuration').first().json.linkedInPersonUrn;\n\nconst cleanCaption = caption\n  .replace(/[\\u0000-\\u001F\\u007F-\\u009F]/g, ' ')\n  .trim();\n\nconst body = {\n  author: authorUrn,\n  lifecycleState: \"PUBLISHED\",\n  specificContent: {\n    \"com.linkedin.ugc.ShareContent\": {\n      shareCommentary: { text: cleanCaption },\n      shareMediaCategory: \"IMAGE\",\n      media: [{\n        status: \"READY\",\n        description: { text: \"AI generated\" },\n        media: assetUrn,\n        title: { text: \"Post\" }\n      }]\n    }\n  },\n  visibility: {\n    \"com.linkedin.ugc.MemberNetworkVisibility\": \"PUBLIC\"\n  }\n};\n\nreturn [{ json: { postBody: JSON.stringify(body) } }];"
+      },
+      "name": "Prepare Post Body",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2400,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.linkedin.com/v2/ugcPosts",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "linkedInOAuth2Api",
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "=application/json",
+        "body": "={{ $json.postBody }}"
+      },
+      "name": "LinkedIn: Create Post",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2600,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const resp = $input.first().json;\nconst postId = resp?.id;\n\nif (!postId) {\n  throw new Error('Post failed: ' + JSON.stringify(resp).substring(0, 300));\n}\n\nreturn [{\n  json: {\n    success: true,\n    postId,\n    postedAt: new Date().toISOString(),\n    message: 'Posted successfully'\n  }\n}];"
+      },
+      "name": "Validate Post",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2800,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "value": "14ZhLzUXrF7NU5OoG4iy0igNnDw2XU4VnSc1IDUk8OWs",
+          "mode": "list"
+        },
+        "sheetName": {
+          "value": "gid=0",
+          "mode": "list"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "ID": "={{ $('Read From Google Sheets').item.json.ID }}",
+            "status": "={{ $json.message }}",
+            "post_id": "={{ $json.postId }}",
+            "posted_date": "={{ $json.postedAt }}"
+          },
+          "matchingColumns": [
+            "ID"
+          ]
+        }
+      },
+      "name": "Update Google Sheet",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        3000,
+        0
+      ]
+    }
+  ],
+  "connections": {},
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

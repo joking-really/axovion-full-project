@@ -1,0 +1,402 @@
+[
+  {
+    "workflow_name": "Abandoned Cart Recovery Bot",
+    "what_it_does": "Sends personalized WhatsApp/SMS messages to customers who abandoned cart within 30 minutes, offering 10% discount code",
+    "industry": "E-commerce",
+    "tools_used": "WhatsApp Business API, Shopify, n8n, OpenAI GPT-4",
+    "result_or_stat": "Recovers 15-25% of abandoned carts, adding $12K-20K monthly revenue for average store",
+    "hook_angle": "result"
+  },
+  {
+    "workflow_name": "AI Product Description Generator",
+    "what_it_does": "Automatically writes SEO-optimized product descriptions for new inventory using AI, includes keywords and emotional triggers",
+    "industry": "E-commerce",
+    "tools_used": "OpenAI GPT-4, Shopify, Airtable, n8n",
+    "result_or_stat": "Saves 20 hours/week of copywriting work, improves product page conversion by 18%",
+    "hook_angle": "process"
+  },
+  {
+    "workflow_name": "Dynamic Pricing Engine",
+    "what_it_does": "Adjusts product prices in real-time based on competitor pricing, inventory levels, and demand signals",
+    "industry": "E-commerce",
+    "tools_used": "Shopify, web scraper, n8n, Google Sheets",
+    "result_or_stat": "Increases profit margins by 8-12% without losing sales volume",
+    "hook_angle": "result"
+  },
+  {
+    "workflow_name": "AI Customer Support Agent",
+    "what_it_does": "Handles 80% of customer inquiries automatically via chat, escalates complex issues to human agents with full context",
+    "industry": "E-commerce",
+    "tools_used": "ChatGPT API, Zendesk, Slack, n8n",
+    "result_or_stat": "Reduces support response time from 4 hours to 45 seconds, saves $3K/month in staffing",
+    "hook_angle": "result"
+  },
+  {
+    "workflow_name": "Review Request Automation",
+    "what_it_does": "Sends personalized review requests 7 days after delivery, follows up twice, offers loyalty points for photos",
+    "industry": "E-commerce",
+    "tools_used": "Klaviyo, Shopify, n8n, LoyaltyLion",
+    "result_or_stat": "Increases review collection rate from 2% to 18%, boosting SEO and social proof",
+    "hook_angle": "result"
+  },
+  {
+    "workflow_name": "Inventory Alert System",
+    "what_it_does": "Monitors stock levels across all SKUs, predicts restock needs using sales velocity, auto-orders from suppliers",
+    "industry": "E-commerce",
+    "tools_used": "Shopify, Google Sheets, n8n, supplier APIs",
+    "result_or_stat": "Eliminates stockouts by 95%, reduces overstock by 30%",
+    "hook_angle": "problem"
+  },
+  {
+    "workflow_name": "AI Image Alt-Text Generator",
+    "what_it_does": "Automatically generates SEO-optimized alt text for all product images using AI vision",
+    "industry": "E-commerce",
+    "tools_used": "OpenAI Vision API, Shopify, n8n",
+    "result_or_stat": "Improves image search traffic by 35%, saves 10 hours/week",
+    "hook_angle": "process"
+  },
+  {
+    "workflow_name": "Order Confirmation Calling Agent",
+    "what_it_does": "AI voice agent calls customers immediately after purchase to confirm order, answer questions, upsell accessories",
+    "industry": "E-commerce",
+    "tools_used": "Vapi, Shopify, n8n, ElevenLabs",
+    "result_or_stat": "Reduces cancellation rate by 22%, increases average order value by $15",
+    "hook_angle": "result"
+  },
+  {
+    "workflow_name": "Competitor Price Monitor",
+    "what_it_does": "Tracks competitor prices daily, alerts when they undercut you, suggests optimal price points",
+    "industry": "E-commerce",
+    "tools_used": "Web scraper, n8n, Google Sheets, Slack",
+    "result_or_stat": "Maintains price competitiveness without race to bottom, protects margins",
+    "hook_angle": "problem"
+  },
+  {
+    "workflow_name": "AI Returns Handler",
+    "what_it_does": "Processes return requests via chat, offers exchange instead of refund, generates return labels automatically",
+    "industry": "E-commerce",
+    "tools_used": "ChatGPT API, Shopify, ShipStation, n8n",
+    "result_or_stat": "Converts 40% of returns into exchanges, saves $2K/month in refund losses",
+    "hook_angle": "result"
+  },
+  {
+    "workflow_name": "VIP Customer Recognition",
+    "what_it_does": "Identifies high-value customers automatically, applies VIP tags, sends exclusive offers, assigns dedicated support",
+    "industry": "E-commerce",
+    "tools_used": "Shopify, Klaviyo, n8n, Slack",
+    "result_or_stat": "Increases customer lifetime value by 35% for top 10% of customers",
+    "hook_angle": "result"
+  },
+  {
+    "workflow_name": "AI Size Recommendation Bot",
+    "what_it_does": "Asks customers 3 questions about fit preferences, recommends perfect size, reduces size-related returns",
+    "industry": "E-commerce (Fashion)",
+    "tools_used": "ChatGPT API, Shopify, n8n",
+    "result_or_stat": "Reduces return rate by 28% for fashion retailers",
+    "hook_angle": "problem"
+  },
+  {
+    "workflow_name": "Flash Sale Countdown Bot",
+    "what_it_does": "Sends escalating urgency messages during flash sales: 2 hours left, 30 min left, 5 min left with personalized recommendations",
+    "industry": "E-commerce",
+    "tools_used": "WhatsApp API, Shopify, n8n, Klaviyo",
+    "result_or_stat": "Increases flash sale revenue by 45% vs single announcement",
+    "hook_angle": "result"
+  },
+  {
+    "workflow_name": "AI Product Bundler",
+    "what_it_does": "Analyzes purchase patterns, creates smart product bundles, auto-generates bundle pages with AI descriptions",
+    "industry": "E-commerce",
+    "tools_used": "Shopify, Google Analytics, n8n, OpenAI GPT-4",
+    "result_or_stat": "Increases average order value by 25%, moves slow inventory",
+    "hook_angle": "result"
+  },
+  {
+    "workflow_name": "Shipping Delay Proactive Notify",
+    "what_it_does": "Monitors shipping tracking, detects delays before customer notices, sends proactive apology with discount code",
+    "industry": "E-commerce",
+    "tools_used": "AfterShip, Shopify, n8n, Klaviyo",
+    "result_or_stat": "Reduces \"where is my order\" tickets by 70%, turns bad experience into loyalty",
+    "hook_angle": "problem"
+  },
+  {
+    "workflow_name": "AI Upsell at Checkout",
+    "what_it_does": "Analyzes cart contents, suggests relevant upsell with one-click add, handles objections via chat",
+    "industry": "E-commerce",
+    "tools_used": "Shopify, ChatGPT API, n8n",
+    "result_or_stat": "Increases checkout conversion by 12%, adds $8K-15K monthly revenue",
+    "hook_angle": "result"
+  },
+  {
+    "workflow_name": "Supplier Performance Tracker",
+    "what_it_does": "Tracks every supplier order, measures on-time delivery, quality score, auto-generates performance reports",
+    "industry": "E-commerce",
+    "tools_used": "Google Sheets, n8n, supplier portals",
+    "result_or_stat": "Identifies underperforming suppliers, reduces defective inventory by 40%",
+    "hook_angle": "process"
+  },
+  {
+    "workflow_name": "AI Gift Recommendation Engine",
+    "what_it_does": "Asks 3 questions about recipient, budget, occasion, recommends perfect products with gift wrapping option",
+    "industry": "E-commerce",
+    "tools_used": "ChatGPT API, Shopify, n8n",
+    "result_or_stat": "Captures gift market segment, increases holiday revenue by 30%",
+    "hook_angle": "result"
+  },
+  {
+    "workflow_name": "Win-Back Dormant Customers",
+    "what_it_does": "Identifies customers who have not purchased in 90 days, sends personalized \"we miss you\" offer with AI-generated reason to return",
+    "industry": "E-commerce",
+    "tools_used": "Klaviyo, Shopify, n8n, OpenAI GPT-4",
+    "result_or_stat": "Reactivates 8-12% of dormant customers, costs 70% less than new customer acquisition",
+    "hook_angle": "result"
+  },
+  {
+    "workflow_name": "AI Product FAQ Generator",
+    "what_it_does": "Analyzes customer support tickets, generates comprehensive FAQ page, auto-updates as new questions arise",
+    "industry": "E-commerce",
+    "tools_used": "Zendesk, OpenAI GPT-4, n8n, Shopify",
+    "result_or_stat": "Reduces support tickets by 35%, improves SEO with long-tail keywords",
+    "hook_angle": "process"
+  },
+  {
+    "workflow_name": "AI Onboarding Sequence",
+    "what_it_does": "Sends personalized onboarding emails based on user behavior, triggers in-app messages for stuck users, schedules demo calls for high-intent signups",
+    "industry": "SaaS",
+    "tools_used": "Mixpanel, Intercom, n8n, Calendly, OpenAI GPT-4",
+    "result_or_stat": "Increases activation rate from 25% to 60%, reduces churn by 20%",
+    "hook_angle": "result"
+  },
+  {
+    "workflow_name": "Churn Prediction & Prevention",
+    "what_it_does": "Analyzes user engagement patterns, predicts churn risk 14 days in advance, triggers retention campaigns for at-risk accounts",
+    "industry": "SaaS",
+    "tools_used": "Mixpanel, HubSpot, n8n, OpenAI GPT-4",
+    "result_or_stat": "Reduces monthly churn by 35%, saves $50K+ in annual recurring revenue",
+    "hook_angle": "result"
+  },
+  {
+    "workflow_name": "AI Sales Qualification Bot",
+    "what_it_does": "Qualifies inbound leads via chat, asks BANT questions, scores leads, books meetings for SQLs, nurtures MQLs with content",
+    "industry": "SaaS",
+    "tools_used": "ChatGPT API, HubSpot, n8n, Calendly",
+    "result_or_stat": "Increases sales team efficiency by 40%, reduces unqualified demos by 60%",
+    "hook_angle": "result"
+  },
+  {
+    "workflow_name": "Feature Adoption Nudges",
+    "what_it_does": "Tracks which features users have not tried, sends personalized tutorials based on their use case, celebrates milestones",
+    "industry": "SaaS",
+    "tools_used": "Amplitude, Intercom, n8n, Loom",
+    "result_or_stat": "Increases feature adoption by 45%, drives expansion revenue",
+    "hook_angle": "process"
+  },
+  {
+    "workflow_name": "AI Release Notes Writer",
+    "what_it_does": "Monitors GitHub commits, auto-generates user-friendly release notes, categorizes by feature/bug/fix, publishes to changelog",
+    "industry": "SaaS",
+    "tools_used": "GitHub, OpenAI GPT-4, n8n, Webflow",
+    "result_or_stat": "Saves product team 5 hours/week, keeps customers informed and engaged",
+    "hook_angle": "process"
+  },
+  {
+    "workflow_name": "Trial-to-Paid Conversion Engine",
+    "what_it_does": "Monitors trial user activity, identifies power users, sends targeted upgrade offers, handles objections via AI chat",
+    "industry": "SaaS",
+    "tools_used": "Stripe, Mixpanel, ChatGPT API, n8n",
+    "result_or_stat": "Increases trial conversion from 8% to 18%, adds $30K MRR",
+    "hook_angle": "result"
+  },
+  {
+    "workflow_name": "AI Support Ticket Triage",
+    "what_it_does": "Reads incoming support tickets, categorizes by urgency and topic, suggests solutions from knowledge base, assigns to right agent",
+    "industry": "SaaS",
+    "tools_used": "Zendesk, OpenAI GPT-4, n8n, Notion",
+    "result_or_stat": "Reduces first response time by 70%, increases resolution rate by 25%",
+    "hook_angle": "result"
+  },
+  {
+    "workflow_name": "Customer Health Score Automation",
+    "what_it_does": "Calculates health score from product usage, support tickets, NPS, contract value, alerts CSM when score drops",
+    "industry": "SaaS",
+    "tools_used": "HubSpot, Mixpanel, n8n, Slack",
+    "result_or_stat": "Proactively saves 15% of at-risk accounts before they churn",
+    "hook_angle": "result"
+  },
+  {
+    "workflow_name": "AI Demo Personalization",
+    "what_it_does": "Researches prospect before demo, generates personalized talking points, creates custom demo environment with their data",
+    "industry": "SaaS",
+    "tools_used": "Apollo.io, OpenAI GPT-4, n8n, Salesforce",
+    "result_or_stat": "Increases demo close rate by 35%, reduces prep time by 80%",
+    "hook_angle": "process"
+  },
+  {
+    "workflow_name": "Usage-Based Billing Automation",
+    "what_it_does": "Tracks API calls, seats, storage usage, generates accurate invoices, alerts customers approaching limits, suggests upgrades",
+    "industry": "SaaS",
+    "tools_used": "Stripe, Mixpanel, n8n, Slack",
+    "result_or_stat": "Eliminates billing disputes by 90%, captures 12% more revenue from usage",
+    "hook_angle": "result"
+  },
+  {
+    "workflow_name": "AI Competitor Mention Alert",
+    "what_it_does": "Monitors Reddit, Twitter, G2, Capterra for competitor mentions, analyzes sentiment, alerts sales team to competitive deals",
+    "industry": "SaaS",
+    "tools_used": "Brand24, n8n, Slack, OpenAI GPT-4",
+    "result_or_stat": "Identifies 50+ competitive opportunities monthly, wins 20% more competitive deals",
+    "hook_angle": "result"
+  },
+  {
+    "workflow_name": "Product-Led Growth Analytics",
+    "what_it_does": "Tracks viral coefficient, time-to-value, activation milestones, generates weekly PLG report for leadership",
+    "industry": "SaaS",
+    "tools_used": "Amplitude, Google Sheets, n8n, Slack",
+    "result_or_stat": "Provides data-driven insights that 3x referral signups in 6 months",
+    "hook_angle": "process"
+  },
+  {
+    "workflow_name": "AI Contract Renewal Assistant",
+    "what_it_does": "Identifies upcoming renewals 90 days out, generates renewal proposals, handles negotiation objections, escalates complex deals",
+    "industry": "SaaS",
+    "tools_used": "HubSpot, DocuSign, ChatGPT API, n8n",
+    "result_or_stat": "Increases renewal rate by 18%, reduces discounting by 25%",
+    "hook_angle": "result"
+  },
+  {
+    "workflow_name": "Bug Report Intelligence",
+    "what_it_does": "Collects bug reports from multiple channels, deduplicates, prioritizes by impact, generates reproduction steps, assigns to engineers",
+    "industry": "SaaS",
+    "tools_used": "GitHub, Sentry, n8n, Linear, OpenAI GPT-4",
+    "result_or_stat": "Reduces time-to-fix by 40%, improves customer satisfaction scores",
+    "hook_angle": "process"
+  },
+  {
+    "workflow_name": "AI Customer Success Playbooks",
+    "what_it_does": "Analyzes top-performing customer success patterns, auto-generates playbooks for different customer segments, tracks playbook effectiveness",
+    "industry": "SaaS",
+    "tools_used": "HubSpot, Notion, n8n, OpenAI GPT-4",
+    "result_or_stat": "Standardizes best practices, reduces CSM onboarding time by 50%",
+    "hook_angle": "process"
+  },
+  {
+    "workflow_name": "AI Appointment Reminder System",
+    "what_it_does": "Sends personalized appointment reminders via WhatsApp/SMS 24h and 2h before, handles rescheduling, fills cancellations from waitlist",
+    "industry": "Medical/Clinics",
+    "tools_used": "Twilio, WhatsApp API, n8n, Calendly",
+    "result_or_stat": "Reduces no-shows by 45%, recovers $8K-15K monthly in lost appointments",
+    "hook_angle": "result"
+  },
+  {
+    "workflow_name": "Patient Follow-Up Automation",
+    "what_it_does": "Sends post-visit care instructions, medication reminders, satisfaction surveys, flags negative responses for staff follow-up",
+    "industry": "Medical/Clinics",
+    "tools_used": "Klaviyo, Typeform, n8n, OpenAI GPT-4",
+    "result_or_stat": "Improves patient satisfaction by 30%, increases Google reviews by 5x",
+    "hook_angle": "result"
+  },
+  {
+    "workflow_name": "AI Insurance Verification Bot",
+    "what_it_does": "Verifies insurance eligibility before appointment, alerts staff to issues, estimates patient responsibility",
+    "industry": "Medical/Clinics",
+    "tools_used": "ChatGPT API, insurance portals, n8n",
+    "result_or_stat": "Eliminates 90% of billing surprises, reduces front-desk workload by 15 hours/week",
+    "hook_angle": "problem"
+  },
+  {
+    "workflow_name": "Lead Nurturing for Aesthetic Clinics",
+    "what_it_does": "Nurtures consultation inquiries with educational content, before/after photos, FAQ answers, books consultation when ready",
+    "industry": "Medical/Aesthetic",
+    "tools_used": "Instagram DM, WhatsApp, n8n, ChatGPT API",
+    "result_or_stat": "Increases consultation booking rate from 15% to 40%",
+    "hook_angle": "result"
+  },
+  {
+    "workflow_name": "AI Medical Scribe",
+    "what_it_does": "Listens to doctor-patient conversation, generates structured SOAP notes, fills EHR fields automatically",
+    "industry": "Medical/Clinics",
+    "tools_used": "Whisper API, OpenAI GPT-4, n8n, EHR system",
+    "result_or_stat": "Saves doctors 2 hours/day on documentation, reduces burnout",
+    "hook_angle": "result"
+  },
+  {
+    "workflow_name": "AI Cold Email Personalizer",
+    "what_it_does": "Researches prospect from LinkedIn, website, news, writes hyper-personalized cold email with specific pain point mention",
+    "industry": "Sales/B2B Agency",
+    "tools_used": "Apollo.io, OpenAI GPT-4, n8n, Instantly",
+    "result_or_stat": "Increases cold email reply rate from 1% to 8%, books 3x more meetings",
+    "hook_angle": "result"
+  },
+  {
+    "workflow_name": "Lead Scoring Automation",
+    "what_it_does": "Scores every lead based on behavior, firmographics, engagement, alerts sales team when lead hits SQL threshold",
+    "industry": "Sales/B2B Agency",
+    "tools_used": "HubSpot, Clearbit, n8n, Slack",
+    "result_or_stat": "Sales team focuses on high-probability leads, increases close rate by 25%",
+    "hook_angle": "result"
+  },
+  {
+    "workflow_name": "AI Proposal Generator",
+    "what_it_does": "Analyzes discovery call notes, generates customized proposal with pricing, scope, timeline, case studies, sends for e-signature",
+    "industry": "Sales/B2B Agency",
+    "tools_used": "OpenAI GPT-4, PandaDoc, n8n, HubSpot",
+    "result_or_stat": "Reduces proposal creation time from 4 hours to 15 minutes",
+    "hook_angle": "process"
+  },
+  {
+    "workflow_name": "CRM Data Enrichment",
+    "what_it_does": "Auto-fills missing contact data from LinkedIn, company websites, news sources, keeps records updated weekly",
+    "industry": "Sales/B2B Agency",
+    "tools_used": "Apollo.io, Clearbit, n8n, HubSpot",
+    "result_or_stat": "Increases contact data completeness from 40% to 95%, improves outreach targeting",
+    "hook_angle": "process"
+  },
+  {
+    "workflow_name": "AI Sales Call Analyzer",
+    "what_it_does": "Transcribes sales calls, identifies objections, tracks talk ratio, scores performance, suggests improvements",
+    "industry": "Sales/B2B Agency",
+    "tools_used": "Fireflies.ai, OpenAI GPT-4, n8n, Google Sheets",
+    "result_or_stat": "Improves rep performance by 30% in 90 days through data-driven coaching",
+    "hook_angle": "result"
+  },
+  {
+    "workflow_name": "AI Property Inquiry Responder",
+    "what_it_does": "Answers property inquiries 24/7 via chat, qualifies buyers by budget/timeline, schedules showings, follows up after visits",
+    "industry": "Real Estate",
+    "tools_used": "ChatGPT API, WhatsApp, n8n, Calendly",
+    "result_or_stat": "Responds to 100% of inquiries in under 30 seconds, increases showings by 40%",
+    "hook_angle": "result"
+  },
+  {
+    "workflow_name": "Automated Listing Distribution",
+    "what_it_does": "Publishes new listings to Zillow, Realtor.com, Facebook Marketplace, Craigslist simultaneously with optimized descriptions",
+    "industry": "Real Estate",
+    "tools_used": "n8n, OpenAI GPT-4, various APIs",
+    "result_or_stat": "Saves 3 hours per listing, increases exposure by 5x",
+    "hook_angle": "process"
+  },
+  {
+    "workflow_name": "AI Buyer Nurturing Sequence",
+    "what_it_does": "Sends personalized property recommendations based on search history, market updates, financing tips, books consultation when ready",
+    "industry": "Real Estate",
+    "tools_used": "Klaviyo, MLS data, n8n, ChatGPT API",
+    "result_or_stat": "Converts 12% of website visitors to buyers vs 3% industry average",
+    "hook_angle": "result"
+  },
+  {
+    "workflow_name": "Seller Follow-Up Automation",
+    "what_it_does": "Monitors market conditions, sends monthly home value reports, alerts when market favors selling, generates CMA on demand",
+    "industry": "Real Estate",
+    "tools_used": "Zillow API, n8n, Mailchimp, OpenAI GPT-4",
+    "result_or_stat": "Generates 2-3 listing appointments monthly from past clients",
+    "hook_angle": "result"
+  },
+  {
+    "workflow_name": "AI Lease Renewal Negotiator",
+    "what_it_does": "Analyzes market rent trends, generates renewal offers, handles tenant objections, schedules signing, flags move-out risks",
+    "industry": "Real Estate/Property Management",
+    "tools_used": "ChatGPT API, DocuSign, n8n, Rentometer",
+    "result_or_stat": "Increases renewal rate by 20%, reduces vacancy to under 5%",
+    "hook_angle": "result"
+  }
+]
